@@ -1,40 +1,97 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Swain - Since 2017</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Swain</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: black;
+      height: 100vh;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      position: relative;
+    }
+
+    .slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1.2s ease-in-out;
+      object-fit: contain;
+    }
+
+    .slide.active {
+      opacity: 1;
+      z-index: 1;
+    }
+
+    .links {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 12px;
+      z-index: 2;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .link-btn {
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-weight: bold;
+      color: white;
+      text-decoration: none;
+      font-size: 15px;
+      box-shadow: 0 0 10px rgba(255,255,255,0.1);
+      transition: all 0.3s;
+    }
+
+    .link-btn:hover {
+      filter: brightness(1.2);
+      transform: scale(1.05);
+    }
+
+    .instagram { background-color: #E1306C; }   /* pembemsi kırmızı */
+    .discord   { background-color: #5865F2; }   /* lacivert */
+    .telegram  { background-color: #0088cc; }   /* mavi */
+    .youtube   { background-color: #FF0000; }   /* kırmızı */
+  </style>
 </head>
 <body>
 
-  <div id="sahne-gosterici">
-    <img src="images/sahne1.png" alt="Swain Since 2017">
-  </div>
+  <!-- Slayt görseller -->
+  <img src="images/sahne1.png" class="slide active" />
+  <img src="images/instagram.png" class="slide" />
+  <img src="images/discord.png" class="slide" />
+  <img src="images/telegram.png" class="slide" />
+  <img src="images/slogan.png" class="slide" />
 
-  <div class="alt-linkler">
-    <a href="https://www.instagram.com/asc.swain?igsh=a3Q2aTU4c21jZGdv" target="_blank">Instagram</a>
-    <a href="https://discord.gg/qEZ69cMf" target="_blank">Discord</a>
-    <a href="https://t.me/katleder" target="_blank">Telegram</a>
-    <a href="https://youtube.com/@swainefsanesi?si=NHkfmjO3bCeQqRuZ" target="_blank">YouTube</a>
+  <!-- Sosyal medya linkleri -->
+  <div class="links">
+    <a href="https://www.instagram.com/asc.swain?igsh=a3Q2aTU4c21jZGdv" target="_blank" class="link-btn instagram">Instagram</a>
+    <a href="https://discord.gg/qEZ69cMf" target="_blank" class="link-btn discord">Discord</a>
+    <a href="https://t.me/katleder" target="_blank" class="link-btn telegram">Telegram</a>
+    <a href="https://youtube.com/@swainefsanesi?si=NHkfmjO3bCeQqRuZ" target="_blank" class="link-btn youtube">YouTube</a>
   </div>
 
   <script>
-    const sahneler = [
-      "images/sahne1.png",     // Swain - Since 2017 yazısı
-      "images/instagram.png",  // Instagram görseli
-      "images/discord.png",    // Discord görseli
-      "images/telegram.png",   // Telegram görseli
-      "images/slogan.png"      // Tanıtım banner'ı
-    ];
-
-    let index = 0;
-    const gosterici = document.getElementById("sahne-gosterici");
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
 
     setInterval(() => {
-      index = (index + 1) % sahneler.length;
-      gosterici.querySelector("img").src = sahneler[index];
-    }, 4000); // 4 saniyede bir sahne değişir
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }, 3000); // her 3 saniyede geçiş
   </script>
 
 </body>
