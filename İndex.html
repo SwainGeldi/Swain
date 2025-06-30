@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Swain - Since 2017</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="sahne-gosterici">
+    <img src="images/sahne1.png" alt="Swain Since 2017">
+  </div>
+
+  <div class="alt-linkler">
+    <a href="https://www.instagram.com/asc.swain?igsh=a3Q2aTU4c21jZGdv" target="_blank">Instagram</a>
+    <a href="https://discord.gg/qEZ69cMf" target="_blank">Discord</a>
+    <a href="https://t.me/katleder" target="_blank">Telegram</a>
+    <a href="https://youtube.com/@swainefsanesi?si=NHkfmjO3bCeQqRuZ" target="_blank">YouTube</a>
+  </div>
+
+  <script>
+    const sahneler = [
+      "images/sahne1.png",     // Swain - Since 2017 yazısı
+      "images/instagram.png",  // Instagram görseli
+      "images/discord.png",    // Discord görseli
+      "images/telegram.png",   // Telegram görseli
+      "images/slogan.png"      // Tanıtım banner'ı
+    ];
+
+    let index = 0;
+    const gosterici = document.getElementById("sahne-gosterici");
+
+    setInterval(() => {
+      index = (index + 1) % sahneler.length;
+      gosterici.querySelector("img").src = sahneler[index];
+    }, 4000); // 4 saniyede bir sahne değişir
+  </script>
+
+</body>
+  </html>
